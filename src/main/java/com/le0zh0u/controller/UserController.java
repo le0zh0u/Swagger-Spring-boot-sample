@@ -17,6 +17,11 @@ public class UserController {
 
     static Map<Long, User> users = Collections.synchronizedMap(new HashMap<>());
 
+    /**
+     * @api {get} /users Request User list
+     * @apiName GetUserList
+     * @apiGroup User
+     */
     @ApiOperation(value = "获取用户列表", notes = "")
     @RequestMapping(value={""}, method=RequestMethod.GET)
     public List<User> getUserList() {
@@ -24,6 +29,14 @@ public class UserController {
         return r;
     }
 
+    /**
+     * @Api {post} /users Add User
+     * @apiName AddUser
+     * @apiGroup User
+     * @apiParam {String} id User unique ID.
+     * @apiParam {String} name User name.
+     * @apiParam {Number} age User age.
+     */
     @ApiOperation(value = "创建用户", notes = "根据User对象创建用户")
     @ApiImplicitParam(name = "user", value = "用户详细实体user", required = true, dataType = "User")
     @RequestMapping(value="", method=RequestMethod.POST)
